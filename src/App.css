@@ -1,28 +1,13 @@
-.App {
-  text-align: center;
+.checker-block {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  background-color: rgba(100,0,0,0.8);
+}
+.checker-block--dark {
+  background-color: rgba(0,0,0,0.5);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.checker-block__board {
+  border: 20px solid rgba(0,0,0,0.5);
 }

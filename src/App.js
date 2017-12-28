@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Navbar,NavItem,Nav,Jumbotron} from 'react-bootstrap';
+import {Jumbotron,Button,ButtonToolbar} from 'react-bootstrap';
+import CheckersGame from './components/checkers-game';
 
-const NavbarInstance = () => {
-  return (
-    <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <a href="#">React-Bootstrap</a>
-        </Navbar.Brand>
-      </Navbar.Header>
-      <Nav>
-        <NavItem eventKey={1} href="#">Link</NavItem>
-        <NavItem eventKey={2} href="#">Link</NavItem>
-      </Nav>
-    </Navbar>
-  );
-};
+const wellStyles = { maxWidth: 400, margin: '0 auto 10px' };
 
 class App extends Component {
   render() {
     return (
-      <div class="container">
-          <NavbarInstance/>
+      <div className="container">
           <Jumbotron>
-            <h1 class="text-center">Hello, world!</h1>
-            <h4 class="text-center">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</h4>
+            <h1 className="text-center"><a href="#">CHECKERS</a></h1>
+            <ButtonToolbar className="text-center" style={wellStyles}>
+              <Button bsStyle="success" bsSize="large" block>Play</Button>
+              <Button bsStyle="warning" bsSize="large" block>Pause</Button>
+              <Button bsStyle="danger" bsSize="large" block>Reset</Button>
+            </ButtonToolbar>
+            <CheckersGame/>
           </Jumbotron>
       </div>
     );
