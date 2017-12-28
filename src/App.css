@@ -1,3 +1,11 @@
+body {
+  overflow: hidden;
+}
+
+.jumbotron {
+  padding-top: 5px;
+}
+
 .checker-block {
   width: 100px;
   height: 100px;
@@ -38,9 +46,6 @@
   background: white;
 }
 
-body {
-  overflow: hidden;
-}
 .checker-block--dark {
   opacity:1;
   background-color: rgba(0,0,0,0.7);
