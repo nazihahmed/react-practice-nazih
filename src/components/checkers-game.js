@@ -5,8 +5,8 @@ export default class CheckersGame extends Component {
   constructor(props) {
     super(props);
     this.scale = {
-      x:6,
-      y:7
+      x:8,
+      y:8
     }
     this.state = {
       isReset: false,
@@ -48,6 +48,7 @@ export default class CheckersGame extends Component {
         break;
       case 'enter':
         console.log('lock this stone to move it');
+        alert('stone is picked up you can move its');
         this.setState({'locked':!this.state.locked});
       default:
         console.log('else',e.keyCode);
@@ -69,6 +70,10 @@ export default class CheckersGame extends Component {
           game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} indicator={this.state.indicator}/>);
         }
         flip = !flip;
+        if(b == y-1) {
+          console.log('flip')
+          flip = !flip;
+        }
       }
     }
     return game;

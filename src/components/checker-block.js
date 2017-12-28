@@ -4,11 +4,15 @@ const CheckerBlock = (props) => {
   let player1 = {
     1: [2,4,6],
     2: [1,3,5,7],
+    3: [],
+    4: []
   }
 
   let player2 = {
     5: [2,4,6],
-    6: [1,3,5,7]
+    6: [1,3,5,7],
+    7: [],
+    8: []
   }
 
   let {x,y} = props;
