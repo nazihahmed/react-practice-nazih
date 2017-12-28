@@ -2,12 +2,18 @@
   width: 120px;
   height: 120px;
   display: inline-block;
-  background-color: rgba(100,0,0,0.8);
+  opacity: 0;
 }
 .checker-block--dark {
-  background-color: rgba(0,0,0,0.5);
+  opacity:1;
+  background-color: rgba(0,0,0,0.7);
 }
 
 .checker-block__board {
-  border: 20px solid rgba(0,0,0,0.5);
+  background-image: url('http://samuraicarpenter.com/wp-content/uploads/2015/03/wood-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 840px;
+  /*border: 20px solid rgba(0,0,0,0.5);*/
 }
