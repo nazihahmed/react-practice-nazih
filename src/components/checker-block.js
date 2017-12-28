@@ -1,21 +1,7 @@
 import React from 'react';
 
 const CheckerBlock = (props) => {
-  let player1 = {
-    1: [2,4,6,8],
-    2: [1,3,5,7],
-    3: [2,4,6,8],
-    4: []
-  }
-
-  let player2 = {
-    5: [],
-    6: [1,3,5,7],
-    7: [2,4,6,8],
-    8: [1,3,5,7],
-  }
-
-  let {x,y} = props;
+  let {player1,player2,x,y,indicator,dark,readyToMove} = props;
 
   function checkPlayer() {
     if (x < 4) {
@@ -36,10 +22,18 @@ const CheckerBlock = (props) => {
   }
 
   function checkIndicator() {
-    return (x == props.indicator[0] && y == props.indicator[1]);
+    return (x == indicator[0] && y == indicator[1]);
   }
+  var once = false;
+
+  if(props.locked&&checkIndicator()&&checkPlayer()>0.1&&!once) {
+    let player = checkPlayer();
+    once = true;
+    console.log(`player: ${player}, x: ${x} y:${y} ${once}`);
+  }
+
   return (
-    <td className={'checker-block '+(props.dark ?'checker-block--dark':'') +
+    <td className={'checker-block '+(dark ?'checker-block--dark':'') +
       ' checker-x'+x+' checker-y'+y + (checkPlayer()==1?' checker-block__player1':'') +
       (checkPlayer()==2?' checker-block__player2':'') + (checkIndicator()?' checker-block__active':'')}>
     </td>

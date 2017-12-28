@@ -11,9 +11,30 @@ export default class CheckersGame extends Component {
     this.state = {
       isReset: false,
       indicator: [3,4],
-      locked: false
+      locked: false,
+      player1: {
+        1: [2,4,6,8],
+        2: [1,3,5,7],
+        3: [2,4,6,8],
+        4: []
+      },
+      player2: {
+        5: [],
+        6: [1,3,5,7],
+        7: [2,4,6,8],
+        8: [1,3,5,7],
+      },
+      current: []
     }
   }
+  readyToMove(player,x,y) {
+    this.setState({current:[x,y]});
+  }
+
+  isMovable() {
+    return this.state.current.length > 0 ? true:false;
+  }
+
   handleKeyDown(e) {
     let keys = {
       37:'left',
@@ -29,6 +50,9 @@ export default class CheckersGame extends Component {
       case 'left':
         if (indicator[1]>1) {
           this.setState({'indicator':[indicator[0],indicator[1]-1]});
+          if(this.isMovable()) {
+            console.log(this.state.current[0],this.state.current[1])
+          }
         }
         break;
       case 'right':
@@ -47,8 +71,6 @@ export default class CheckersGame extends Component {
         }
         break;
       case 'enter':
-        console.log('lock this stone to move it');
-        alert('stone is picked up you can move its');
         this.setState({'locked':!this.state.locked});
       default:
         console.log('else',e.keyCode);
@@ -61,17 +83,15 @@ export default class CheckersGame extends Component {
     let game = [];
     let flip = false;
     let {x,y} = this.scale;
-    console.log(x,y);
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
         if(flip) {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark indicator={this.state.indicator}/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark {...this.state} readyToMove={this.readyToMove.bind(this)}/>);
         } else {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} indicator={this.state.indicator}/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} {...this.state} readyToMove={this.readyToMove.bind(this)}/>);
         }
         flip = !flip;
         if(b == y-1) {
-          console.log('flip')
           flip = !flip;
         }
       }
