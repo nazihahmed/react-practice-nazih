@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Navbar,NavItem,Nav,Jumbotron} from 'react-bootstrap';
+
+const NavbarInstance = () => {
+  return (
+    <Navbar>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <a href="#">React-Bootstrap</a>
+        </Navbar.Brand>
+      </Navbar.Header>
+      <Nav>
+        <NavItem eventKey={1} href="#">Link</NavItem>
+        <NavItem eventKey={2} href="#">Link</NavItem>
+      </Nav>
+    </Navbar>
+  );
+};
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div class="container">
+          <NavbarInstance/>
+          <Jumbotron>
+            <h1 class="text-center">Hello, world!</h1>
+            <h4 class="text-center">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</h4>
+          </Jumbotron>
       </div>
     );
   }
