@@ -5,12 +5,16 @@ export default class CheckersGame extends Component {
   constructor(props) {
     super(props);
     this.scale = {
-      x:7,
-      y:6
+      x:6,
+      y:7
     }
     this.state = {
       isReset: false
     }
+  }
+
+  initializePlayers() {
+    let positions = [];
   }
 
   renderGame() {
@@ -21,9 +25,9 @@ export default class CheckersGame extends Component {
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
         if(flip) {
-          game.push(<CheckerBlock key={'checker'+b+i} dark/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark/>);
         } else {
-          game.push(<CheckerBlock key={'checker'+b+i}/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1}/>);
         }
         flip = !flip;
       }
