@@ -12,8 +12,8 @@ class App extends Component {
           <Jumbotron>
             <h1 className="text-center"><a href="#">CHECKERS</a></h1>
             <ButtonToolbar className="text-center" style={wellStyles}>
-              <Button bsStyle="success" bsSize="large" block>Play</Button>
-              <Button bsStyle="warning" bsSize="large" block>Pause</Button>
+              {/* <Button bsStyle="success" bsSize="large" block>Play</Button> */}
+              {/* <Button bsStyle="warning" bsSize="large" block>Pause</Button> */}
               <Button bsStyle="danger" bsSize="large" block>Reset</Button>
             </ButtonToolbar>
             <CheckersGame/>
