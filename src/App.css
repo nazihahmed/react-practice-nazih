@@ -5,6 +5,11 @@
   opacity: 0;
 }
 
+.checker-block__active {
+  background-color: rgba(0,0,100,0.5) !important;
+  opacity: 1 !important;
+}
+
 .checker-block__player1::after{
   content: "";
   display: block;
@@ -14,7 +19,7 @@
   left: 25px;
   top: 25px;
   border-radius: 100%;
-  background: red;
+  background: tomato;
 }
 
 .checker-block__player2::after{
@@ -26,7 +31,7 @@
   left: 25px;
   top: 25px;
   border-radius: 100%;
-  background: blue;
+  background: white;
 }
 
 body {
