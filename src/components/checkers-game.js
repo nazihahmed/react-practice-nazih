@@ -32,7 +32,7 @@ export default class CheckersGame extends Component {
         }
         break;
       case 'right':
-        if (indicator[1]<=x) {
+        if (indicator[1]<y) {
           this.setState({'indicator':[indicator[0],indicator[1]+1]});
         }
         break;
@@ -42,7 +42,7 @@ export default class CheckersGame extends Component {
         }
         break;
       case 'down':
-        if (indicator[0]<y) {
+        if (indicator[0]<x) {
           this.setState({'indicator':[indicator[0]+1,indicator[1]]});
         }
         break;
