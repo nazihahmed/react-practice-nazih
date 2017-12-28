@@ -2,23 +2,23 @@ import React from 'react';
 
 const CheckerBlock = (props) => {
   let player1 = {
-    1: [2,4,6],
+    1: [2,4,6,8],
     2: [1,3,5,7],
-    3: [],
+    3: [2,4,6,8],
     4: []
   }
 
   let player2 = {
-    5: [2,4,6],
+    5: [],
     6: [1,3,5,7],
-    7: [],
-    8: []
+    7: [2,4,6,8],
+    8: [1,3,5,7],
   }
 
   let {x,y} = props;
 
   function checkPlayer() {
-    if (x < 3) {
+    if (x < 4) {
       if(player1[x].indexOf(y)!==-1) {
         return 1;
       } else {
