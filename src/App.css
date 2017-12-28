@@ -4,6 +4,31 @@
   display: inline-block;
   opacity: 0;
 }
+
+.checker-block__player1::after{
+  content: "";
+  display: block;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  left: 25px;
+  top: 25px;
+  border-radius: 100%;
+  background: red;
+}
+
+.checker-block__player2::after{
+  content: "";
+  display: block;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  left: 25px;
+  top: 25px;
+  border-radius: 100%;
+  background: blue;
+}
+
 body {
   overflow: hidden;
 }

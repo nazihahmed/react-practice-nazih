@@ -13,9 +13,9 @@ export default class CheckersGame extends Component {
     }
   }
 
-  initializePlayers() {
-    let positions = [];
-  }
+  // initializePlayers() {
+  //
+  // }
 
   renderGame() {
     let game = [];
