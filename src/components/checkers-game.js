@@ -135,6 +135,7 @@ export default class CheckersGame extends Component {
           this.setState((state) => {
             state.currentPlayer = (state.currentPlayer===1) ? 2 : 1;
             state.locked = !state.locked;
+            return state;
           });
         }
         currentP = this.checkPiece();
