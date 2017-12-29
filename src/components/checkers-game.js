@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import CheckerBlock from './checker-block';
+import {Button,ButtonToolbar} from 'react-bootstrap';
 
 const defaults = {
-  isReset: false,
   indicator: [3,4],
   locked: false,
   player1: {
@@ -108,18 +108,19 @@ export default class CheckersGame extends Component {
   }
 
   resetGame() {
-    this.setState({isReset:true});
+    this.setState(defaults);
   }
 
   render() {
     return (
-        <table className="checker-block__board">
-          <tbody>
-            <tr>
-              {this.renderGame()}
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <ButtonToolbar className="text-center reset-button">
+            <Button bsStyle="danger" bsSize="large" onClick={this.resetGame.bind(this)} block>Reset</Button>
+          </ButtonToolbar>
+          <div className="checker-block__board">
+                {this.renderGame()}
+          </div>
+        </div>
       );
   }
 }

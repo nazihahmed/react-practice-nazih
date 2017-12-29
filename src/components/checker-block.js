@@ -3,7 +3,7 @@ import React from 'react';
 const CheckerBlock = ({player1,player2,x,y,indicator,dark,locked}) => {
 
   // check if this block is locked down for movement
-  if(locked && checkIndicator() && checkPlayer() > 0.1 ) {
+  if(locked && checkIndicator() && checkPlayer() > 0 ) {
     let player = checkPlayer();
     console.log(`player: ${player}, x: ${x} y:${y}`);
   }
@@ -55,8 +55,8 @@ const CheckerBlock = ({player1,player2,x,y,indicator,dark,locked}) => {
   }
 
   return (
-    <td className={'checker-block '+ checkClasses()}>
-    </td>
+    <span className={'checker-block '+ checkClasses()}>
+    </span>
   );
 };
 
