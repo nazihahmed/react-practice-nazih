@@ -51,6 +51,22 @@ export default class CheckersGame extends Component {
     return 0;
   }
 
+  movePlayer(x=0,y=0) {
+    let {indicator,currentPlayer} = this.state;
+    this.setState((state) => {
+      let player = 'player'+currentPlayer;
+      let arr = state[player][indicator[0]];
+      arr.splice(arr.indexOf(indicator[1]), 1);
+      state[player][indicator[0]+x].push(indicator[1]+y);
+      return state;
+    });
+  }
+
+  moveIndicator(x=0,y=0) {
+    let {indicator} = this.state;
+    this.setState({'indicator':[indicator[0]+x,indicator[1]+y]});
+  }
+
   handleKeyDown(e) {
     // the allowed key codes
     let keys = {
@@ -64,59 +80,70 @@ export default class CheckersGame extends Component {
     let {indicator,locked,currentPlayer} = this.state;
     let {x,y} = this.scale;
     let currentP;
+    let movePlayer = this.movePlayer.bind(this);
+    let moveIndicator = this.moveIndicator.bind(this);
     switch(keys[e.keyCode]){
       case 'left':
         // if the user wants to move this stone
         currentP = this.checkPiece();
         if (locked && currentP === currentPlayer) {
           // piece is allowed to move
-          console.log('piece allowed to move',currentP);
+          movePlayer(0,-1);
         }
 
         // if more than min allow to move
         if (indicator[1]>1) {
-          this.setState({'indicator':[indicator[0],indicator[1]-1]});
+          moveIndicator(0,-1);
         }
         break;
       case 'right':
         currentP = this.checkPiece();
         if (locked && currentP === currentPlayer) {
           // piece is allowed to move
-          console.log('piece allowed to move',currentP);
+          movePlayer(0,1);
         }
         // if less than max allow to move
         if (indicator[1]<y) {
-          this.setState({'indicator':[indicator[0],indicator[1]+1]});
+          moveIndicator(0,1);
         }
         break;
       case 'up':
         currentP = this.checkPiece();
         if (locked && currentP === currentPlayer) {
           // piece is allowed to move
-          console.log('piece allowed to move',currentP);
+          movePlayer(-1,0);
         }
         // if more than min allow to move
         if (indicator[0]>1) {
-          this.setState({'indicator':[indicator[0]-1,indicator[1]]});
+          moveIndicator(-1,0);
         }
         break;
       case 'down':
         currentP = this.checkPiece();
         if (locked && currentP === currentPlayer) {
           // piece is allowed to move
-          console.log('piece allowed to move',currentP);
+          movePlayer(1,0);
         }
         // if less than max allow to move
         if (indicator[0]<x) {
-          this.setState({'indicator':[indicator[0]+1,indicator[1]]});
+          moveIndicator(1,0);
         }
         break;
       case 'enter':
         // switch the locked state on each enter
-        if(locked) {
-          this.setState({currentPlayer:currentPlayer===1?2:1});
+        if(this.state.locked) {
+          this.setState((state) => {
+            state.currentPlayer = (state.currentPlayer===1) ? 2 : 1;
+            state.locked = !state.locked;
+          });
         }
-        this.setState({'locked':!locked});
+        currentP = this.checkPiece();
+        if (!locked && currentP === currentPlayer) {
+          this.setState((state)=> {
+            state.locked = !state.locked
+            return state;
+          });
+        }
         break;
       default:
         console.log('else',e.keyCode);
@@ -153,7 +180,7 @@ export default class CheckersGame extends Component {
     return (
         <div className="overall-container">
           <Button bsStyle="danger" className="reset-button" bsSize="large" onClick={this.resetGame.bind(this)}>Reset</Button>
-          <p className="text-center">Current Player: {this.state.currentPlayer===1?'Red':'White'}</p>
+          <p className="text-center">Current Player: {this.state.currentPlayer===1?'Red':'White'}, lock: {this.state.locked?'locked':'unlocked'}</p>
           <div className="checker-block__board">
                 {this.renderGame()}
           </div>
