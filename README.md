@@ -27,6 +27,9 @@ npm start
   5. show the current player
 - other enhancements to game are welcome too
 
+## total time spent working
+- about 5.5 hours
+
 ### star this project to support!
 
 > project created by [Nazih Ahmed](http://nazih.me)
