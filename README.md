@@ -12,6 +12,12 @@ npm install
 npm start
 ```
 
+## how to play
+- use the arrow keys to move the indicator
+- click enter to lock down a piece to move it
+- use the arrows to move the piece
+- click enter to let go
+
 ## contribution - features to implement
 - the features that are left is:
   1. define for each stone the criteria that allows it or prevents it from moving

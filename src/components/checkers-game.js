@@ -38,10 +38,6 @@ export default class CheckersGame extends Component {
     this.state = defaults;
   }
 
-  isMovable() {
-    return this.state.current.length > 0 ? true:false;
-  }
-
   handleKeyDown(e) {
     let keys = {
       37:'left',
@@ -51,33 +47,35 @@ export default class CheckersGame extends Component {
       13:'enter'
     }
 
-    let indicator = this.state.indicator;
+    let {indicator} = this.state;
     let {x,y} = this.scale;
     switch(keys[e.keyCode]){
       case 'left':
+        // if more than min allow to move
         if (indicator[1]>1) {
           this.setState({'indicator':[indicator[0],indicator[1]-1]});
-          if(this.isMovable()) {
-            console.log(this.state.current[0],this.state.current[1])
-          }
         }
         break;
       case 'right':
+        // if less than max allow to move
         if (indicator[1]<y) {
           this.setState({'indicator':[indicator[0],indicator[1]+1]});
         }
         break;
       case 'up':
+        // if more than min allow to move
         if (indicator[0]>1) {
           this.setState({'indicator':[indicator[0]-1,indicator[1]]});
         }
         break;
       case 'down':
+        // if less than max allow to move
         if (indicator[0]<x) {
           this.setState({'indicator':[indicator[0]+1,indicator[1]]});
         }
         break;
       case 'enter':
+        // switch the locked state on each enter
         this.setState({'locked':!this.state.locked});
         break;
       default:
