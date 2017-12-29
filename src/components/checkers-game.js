@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import CheckerBlock from './checker-block';
 import {Button,ButtonToolbar} from 'react-bootstrap';
 
+// state defaults
 const defaults = {
   indicator: [4,4],
   locked: false,
@@ -31,6 +32,7 @@ const defaults = {
 export default class CheckersGame extends Component {
   constructor(props) {
     super(props);
+    // the size of the board
     this.scale = {
       x:8,
       y:8
@@ -39,6 +41,7 @@ export default class CheckersGame extends Component {
   }
 
   handleKeyDown(e) {
+    // the allowed key codes
     let keys = {
       37:'left',
       39:'right',
@@ -94,11 +97,8 @@ export default class CheckersGame extends Component {
 
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
-        if(flip) {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark {...this.state} />);
-        } else {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} {...this.state} />);
-        }
+        game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark={flip?true:false} {...this.state} />);
+        // flip logic for dark blocks
         flip = !flip;
         if(b === y-1) {
           flip = !flip;
