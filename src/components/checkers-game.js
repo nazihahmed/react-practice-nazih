@@ -26,7 +26,7 @@ const defaults = {
     7: [2,4,6,8],
     8: [1,3,5,7],
   },
-  current: []
+  currentPlayer: 1
 };
 
 export default class CheckersGame extends Component {
@@ -40,6 +40,17 @@ export default class CheckersGame extends Component {
     this.state = defaults;
   }
 
+  checkPiece() {
+    let {indicator,player1,player2} = this.state;
+    // console.log(indicator,player1,player2);
+    if (player1[indicator[0]].indexOf(indicator[1]) !== -1) {
+      return 1;
+    } else if (player2[indicator[0]].indexOf(indicator[1]) !== -1) {
+      return 2;
+    }
+    return 0;
+  }
+
   handleKeyDown(e) {
     // the allowed key codes
     let keys = {
@@ -50,28 +61,51 @@ export default class CheckersGame extends Component {
       13:'enter'
     }
 
-    let {indicator} = this.state;
+    let {indicator,locked,currentPlayer} = this.state;
     let {x,y} = this.scale;
+    let currentP;
     switch(keys[e.keyCode]){
       case 'left':
+        // if the user wants to move this stone
+        currentP = this.checkPiece();
+        if (locked && currentP === currentPlayer) {
+          // piece is allowed to move
+          console.log('piece allowed to move',currentP);
+        }
+
         // if more than min allow to move
         if (indicator[1]>1) {
           this.setState({'indicator':[indicator[0],indicator[1]-1]});
         }
         break;
       case 'right':
+        currentP = this.checkPiece();
+        if (locked && currentP === currentPlayer) {
+          // piece is allowed to move
+          console.log('piece allowed to move',currentP);
+        }
         // if less than max allow to move
         if (indicator[1]<y) {
           this.setState({'indicator':[indicator[0],indicator[1]+1]});
         }
         break;
       case 'up':
+        currentP = this.checkPiece();
+        if (locked && currentP === currentPlayer) {
+          // piece is allowed to move
+          console.log('piece allowed to move',currentP);
+        }
         // if more than min allow to move
         if (indicator[0]>1) {
           this.setState({'indicator':[indicator[0]-1,indicator[1]]});
         }
         break;
       case 'down':
+        currentP = this.checkPiece();
+        if (locked && currentP === currentPlayer) {
+          // piece is allowed to move
+          console.log('piece allowed to move',currentP);
+        }
         // if less than max allow to move
         if (indicator[0]<x) {
           this.setState({'indicator':[indicator[0]+1,indicator[1]]});
@@ -79,7 +113,10 @@ export default class CheckersGame extends Component {
         break;
       case 'enter':
         // switch the locked state on each enter
-        this.setState({'locked':!this.state.locked});
+        if(locked) {
+          this.setState({currentPlayer:currentPlayer===1?2:1});
+        }
+        this.setState({'locked':!locked});
         break;
       default:
         console.log('else',e.keyCode);
@@ -91,9 +128,9 @@ export default class CheckersGame extends Component {
 
   // assemble the board
   renderGame() {
-    let game = [];
+    let game = [];// array of all checker blocks
     let flip = false;
-    let {x,y} = this.scale;
+    let {x,y} = this.scale;// the size of the board
 
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
