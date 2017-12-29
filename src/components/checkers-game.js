@@ -89,7 +89,6 @@ export default class CheckersGame extends Component {
     let moveIndicator = this.moveIndicator.bind(this);
     switch(keys[e.keyCode]){
       case 'left':
-        // if the user wants to move this stone
         currentP = this.checkPiece();
         // if more than min allow to move
         if (indicator[1]>1) {
