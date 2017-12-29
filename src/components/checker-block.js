@@ -2,12 +2,6 @@ import React from 'react';
 
 const CheckerBlock = ({player1,player2,x,y,indicator,dark,locked}) => {
 
-  // check if this block is locked down for movement
-  // if(locked && checkIndicator() && checkPlayer() > 0 ) {
-  //   let player = checkPlayer();
-  //   console.log(`player: ${player}, x: ${x} y:${y}`);
-  // }
-
   /**
    * @return {number} 1 for player 1, 2 for player 2 and 0 if none
    */
