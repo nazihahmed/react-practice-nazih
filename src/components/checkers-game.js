@@ -3,31 +3,7 @@ import CheckerBlock from './checker-block';
 import {Button} from 'react-bootstrap';
 
 // state defaults
-const defaults = {
-  indicator: [4,4],
-  locked: false,
-  player1: {
-    1: [2,4,6,8],
-    2: [1,3,5,7],
-    3: [2,4,6,8],
-    4: [],
-    5: [],
-    6: [],
-    7: [],
-    8: []
-  },
-  player2: {
-    1: [],
-    2: [],
-    3: [],
-    4: [],
-    5: [],
-    6: [1,3,5,7],
-    7: [2,4,6,8],
-    8: [1,3,5,7],
-  },
-  currentPlayer: 1
-};
+
 
 export default class CheckersGame extends Component {
   constructor(props) {
@@ -37,7 +13,35 @@ export default class CheckersGame extends Component {
       x:8,
       y:8
     }
-    this.state = defaults;
+    this.state = this.getInitialState();
+  }
+  getInitialState(){
+    const initialState = {
+      indicator: [4,4],
+      locked: false,
+      player1: {
+       1: [2,4,6,8],
+       2: [1,3,5,7],
+       3: [2,4,6,8],
+       4: [],
+       5: [],
+       6: [],
+       7: [],
+       8: []
+      },
+      player2: {
+       1: [],
+       2: [],
+       3: [],
+       4: [],
+       5: [],
+       6: [1,3,5,7],
+       7: [2,4,6,8],
+       8: [1,3,5,7],
+      },
+      currentPlayer: 1
+    };
+    return initialState;
   }
 
   checkPiece() {
@@ -174,7 +178,7 @@ export default class CheckersGame extends Component {
   }
 
   resetGame() {
-    this.setState(defaults);
+    this.setState(this.getInitialState());
   }
 
   render() {
