@@ -2,9 +2,6 @@ import React,{Component} from 'react';
 import CheckerBlock from './checker-block';
 import {Button} from 'react-bootstrap';
 
-// state defaults
-
-
 export default class CheckersGame extends Component {
   constructor(props) {
     super(props);
@@ -74,11 +71,15 @@ export default class CheckersGame extends Component {
   handleKeyDown(e) {
     // the allowed key codes
     let keys = {
-      37:'left',
-      39:'right',
-      38:'up',
-      40:'down',
-      13:'enter'
+      37:'left', // arrow left
+      65:'left', // A key
+      39:'right',// arrow right
+      68:'right',// D key
+      38:'up',// arrow up
+      87:'up',// W key
+      40:'down',// arrow down
+      83:'down',// S key
+      13:'enter'// enter key
     }
 
     let {indicator,locked,currentPlayer} = this.state;
@@ -137,6 +138,7 @@ export default class CheckersGame extends Component {
         // switch the locked state on each enter
         if(this.state.locked) {
           this.setState((state) => {
+            // switch current player
             state.currentPlayer = (state.currentPlayer===1) ? 2 : 1;
             state.locked = !state.locked;
             return state;

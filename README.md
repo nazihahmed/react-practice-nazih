@@ -15,20 +15,18 @@ npm start
 ## how to play
 - use the arrow keys to move the indicator
 - click enter to lock down a piece to move it
-- use the arrows to move the piece
-- click enter to let go
+- player one uses the arrow key to move
+- player two uses A W S D keys to move
+- the current player is shown and that is the only player allowed to lock down a piece
 
 ## contribution - features to implement
 - the features that are left is:
   1. define for each piece the criteria that allows it or prevents it from moving
-  2. after enter is released the piece can be left in it's place with updating the results
-  3. allow multiple inputs from different users (using different keys for each)
-  4. define wining situation and who wins
-  5. show the current player
+  2. define wining situation and who wins
 - other enhancements to game are welcome too
 
 ## total time spent working
-- about 5.5 hours
+- about 6 hours
 
 ### star this project to support!
 
