@@ -1,6 +1,33 @@
 import React,{Component} from 'react';
 import CheckerBlock from './checker-block';
 
+const defaults = {
+  isReset: false,
+  indicator: [3,4],
+  locked: false,
+  player1: {
+    1: [2,4,6,8],
+    2: [1,3,5,7],
+    3: [2,4,6,8],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: []
+  },
+  player2: {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [1,3,5,7],
+    7: [2,4,6,8],
+    8: [1,3,5,7],
+  },
+  current: []
+};
+
 export default class CheckersGame extends Component {
   constructor(props) {
     super(props);
@@ -8,27 +35,7 @@ export default class CheckersGame extends Component {
       x:8,
       y:8
     }
-    this.state = {
-      isReset: false,
-      indicator: [3,4],
-      locked: false,
-      player1: {
-        1: [2,4,6,8],
-        2: [1,3,5,7],
-        3: [2,4,6,8],
-        4: []
-      },
-      player2: {
-        5: [],
-        6: [1,3,5,7],
-        7: [2,4,6,8],
-        8: [1,3,5,7],
-      },
-      current: []
-    }
-  }
-  readyToMove(player,x,y) {
-    this.setState({current:[x,y]});
+    this.state = defaults;
   }
 
   isMovable() {
@@ -72,6 +79,7 @@ export default class CheckersGame extends Component {
         break;
       case 'enter':
         this.setState({'locked':!this.state.locked});
+        break;
       default:
         console.log('else',e.keyCode);
     }
@@ -86,12 +94,12 @@ export default class CheckersGame extends Component {
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
         if(flip) {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark {...this.state} readyToMove={this.readyToMove.bind(this)}/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} dark {...this.state} />);
         } else {
-          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} {...this.state} readyToMove={this.readyToMove.bind(this)}/>);
+          game.push(<CheckerBlock key={'checker'+b+i} x={i+1} y={b+1} {...this.state} />);
         }
         flip = !flip;
-        if(b == y-1) {
+        if(b === y-1) {
           flip = !flip;
         }
       }
