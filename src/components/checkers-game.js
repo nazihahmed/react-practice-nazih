@@ -152,6 +152,8 @@ export default class CheckersGame extends Component {
           });
         }
         break;
+      default:
+        console.log('else',e.keyCode);
     }
   }
   componentWillMount() {
