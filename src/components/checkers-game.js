@@ -91,46 +91,45 @@ export default class CheckersGame extends Component {
       case 'left':
         // if the user wants to move this stone
         currentP = this.checkPiece();
-        if (locked && currentP === currentPlayer) {
-          // piece is allowed to move
-          movePlayer(0,-1);
-        }
-
         // if more than min allow to move
         if (indicator[1]>1) {
+          if (locked && currentP === currentPlayer) {
+            // piece is allowed to move
+            movePlayer(0,-1);
+          }
           moveIndicator(0,-1);
         }
         break;
       case 'right':
         currentP = this.checkPiece();
-        if (locked && currentP === currentPlayer) {
-          // piece is allowed to move
-          movePlayer(0,1);
-        }
         // if less than max allow to move
         if (indicator[1]<y) {
+          if (locked && currentP === currentPlayer) {
+            // piece is allowed to move
+            movePlayer(0,1);
+          }
           moveIndicator(0,1);
         }
         break;
       case 'up':
         currentP = this.checkPiece();
-        if (locked && currentP === currentPlayer) {
-          // piece is allowed to move
-          movePlayer(-1,0);
-        }
         // if more than min allow to move
         if (indicator[0]>1) {
+          if (locked && currentP === currentPlayer) {
+            // piece is allowed to move
+            movePlayer(-1,0);
+          }
           moveIndicator(-1,0);
         }
         break;
       case 'down':
         currentP = this.checkPiece();
-        if (locked && currentP === currentPlayer) {
-          // piece is allowed to move
-          movePlayer(1,0);
-        }
         // if less than max allow to move
         if (indicator[0]<x) {
+          if (locked && currentP === currentPlayer) {
+            // piece is allowed to move
+            movePlayer(1,0);
+          }
           moveIndicator(1,0);
         }
         break;
