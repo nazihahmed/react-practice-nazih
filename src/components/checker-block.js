@@ -55,8 +55,8 @@ const CheckerBlock = ({player1,player2,x,y,indicator,dark,locked}) => {
   }
 
   return (
-    <span className={'checker-block '+ checkClasses()}>
-    </span>
+    <div className={'checker-block '+ checkClasses()}>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import CheckerBlock from './checker-block';
 import {Button,ButtonToolbar} from 'react-bootstrap';
 
 const defaults = {
-  indicator: [3,4],
+  indicator: [4,4],
   locked: false,
   player1: {
     1: [2,4,6,8],
@@ -85,10 +85,13 @@ export default class CheckersGame extends Component {
   componentWillMount() {
     document.addEventListener("keydown", this.handleKeyDown.bind(this), false);
   }
+
+  // assemble the board
   renderGame() {
     let game = [];
     let flip = false;
     let {x,y} = this.scale;
+
     for (let i = 0;i<x;i++){
       for(let b = 0;b<y;b++) {
         if(flip) {
