@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import CheckerBlock from './checker-block';
-import {Button,ButtonToolbar} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 // state defaults
 const defaults = {
@@ -151,10 +151,9 @@ export default class CheckersGame extends Component {
 
   render() {
     return (
-        <div>
-          <ButtonToolbar className="text-center reset-button">
-            <Button bsStyle="danger" bsSize="large" onClick={this.resetGame.bind(this)} block>Reset</Button>
-          </ButtonToolbar>
+        <div className="overall-container">
+          <Button bsStyle="danger" className="reset-button" bsSize="large" onClick={this.resetGame.bind(this)}>Reset</Button>
+          <p className="text-center">Current Player: {this.state.currentPlayer===1?'Red':'White'}</p>
           <div className="checker-block__board">
                 {this.renderGame()}
           </div>
